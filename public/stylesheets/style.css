@@ -1,0 +1,91 @@
+html{height:100%;}
+body{height: 100%;margin: 0;}
+*{
+  padding: 0;
+  margin: 0;
+}
+.header{
+  background-color: #556b56;
+  height: 73px;
+  text-align: center;
+  width: 100%;
+}
+.header p{
+  color: white;
+  font-size: 25px;
+  font-family: "宋体";
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translate(-50%, -50%);  /* 使用css3的transform来实现 */
+  height: 40px;
+  width: 30%;
+}
+.info{
+  font-size: 20px;
+  float: left;
+  margin: 0;
+  text-align-last: justify;
+}
+.footer {
+  background-color: #556b56;
+  position: absolute;
+  top:100%;
+  width: 100%;
+  color: white;
+}
+.copyright{
+  padding: 8px;
+}
+.copyright .txt,p {
+  width: 100%;
+  height: 24px;
+  margin: 0 auto;
+  text-align: center;
+}
+.nav{
+  background-color: #8eb495;
+  width: 15%;
+  height: 100%;
+  float: left;
+  text-align: center;
+  color: white;
+}
+.navbar{
+  width: 100%;
+  font-size: 18px;
+  height: 40px;
+  line-height: 40px;
+  letter-spacing: 0.3em;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+a:hover{
+  color: #a2dfa5;
+}
+a:active{
+  color: #556b56;
+}
+.manage{
+  color: white;
+  font-weight: bold;
+}
+.active{
+  width: 100%;
+  background-color: #556b56;
+  color: white;
+}
+.logout{
+  margin: 0;
+  color: black;
+  position: absolute;
+  right: 5px;
+  top: 7%;
+  font-size: 15px;
+  color: #8eb495;
+}

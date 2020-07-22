@@ -1,0 +1,105 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>用户信息页面</title>
+  <link rel='stylesheet' href='/stylesheets/userinfo.css' />
+  <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+</head>
+
+<body>
+  
+<div class="userinfo">
+  <div class="search">
+    <%if(data[0].roleid == 1){%>
+      <form method="post" action="/api/users/registerinfo">
+        用户ID：<input type="text" id="userid" name="userid" onchange="check()">
+        用户名：<input type="text" name="username" id="username" onchange="check()">
+        密码：<input type="text" value="123" readonly name="password" style="width: 50px;">
+        <br><br>
+        密保问题：<input type="text" value="我的名字" readonly name="question">
+        密保答案：<input type="text" value="123" readonly name="ans">
+        <button type="submit" class="addbtn" id="addbtn" disabled>新增用户</button>
+      </form>
+      <br>
+    <%}%>
+  </div>
+  
+  <table id="userlist">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>头像</th>
+        <th>用户ID</th>
+        <th>姓名</th>
+        <%if(data[0].roleid == 1){%>
+        <th>删除</th>
+        <th>成为管理员</th>
+        <%}%>
+      </tr>
+    </thead>
+    <tbody><!-- data.length -->
+      <%for(i=0;i<data.length;i++){%>
+        <tr>
+          <td><%=data[i].id%></td>
+          <td><img src='<%=data[i].avatar%>'></td>
+          <td><%=data[i].userid%></td>
+          <td><%=data[i].username%></td>
+          <%if(data[0].roleid != 0){%>
+          <td><a href="/users/delete/<%=data[i].userid%>" class="btn">删除</a></td>
+          <td><a href="/users/setadmin/<%=data[i].userid%>" class="btn">admin</a></td>
+          <%}%>
+        </tr>
+      <%}%>
+    </tbody>
+  </table>
+
+  <ul class="pagination pull-right" id="pagination">
+    <li><a href="/users/all/<%=data[0].roleid%>/1">第一页</a></li><!--  class="disabled" -->
+    <%for(j=1;j<= pagesize;j++){%>
+      <li id="<%= j %>">
+        <a href="/users/all/<%=data[0].roleid%>/<%= j %>"><%= j %> 
+          <span class="sr-only">(current)</span></a>
+      </li>
+    <%}%>
+    <li><a href="/users/all/<%=data[0].roleid%>/<%=pagesize%>">最后一页</a></li>
+  </ul>
+</div>
+
+  
+</body>
+</html>
+
+<script type="text/javascript">
+  window.onload = function(){
+    let lis = document.getElementById('pagination').getElementsByTagName('li')
+    
+    for(var i=0;i<lis.length;i++){     
+        if(i!=0 && i!=lis.length-1){
+            lis[i].onclick = function(){                     // 清除选中样式
+                    for(var j=1;j<(lis.length-1);j++){
+                        if(lis[j].className == 'active')
+                        {
+                            lis[j].className = '';
+                            break;
+                        }
+                    }
+                this.className = 'active'
+            }
+            lis[1].onclick()
+        }
+    }
+  }
+
+  function check(){
+    let btn = document.getElementsByClassName('addbtn')
+    /* console.log(document.getElementById('userid').value.length) */
+    if(document.getElementById('userid').value.length>=8 && document.getElementById('username').value.length>0
+    && document.getElementById('userid').value.length<=11){
+      document.getElementById('addbtn').disabled = ''
+    }
+    else{
+      alert("用户ID长度为8-11位");
+    }
+  }
+</script>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>艺升</title>
+  <link rel='stylesheet' href='/stylesheets/style_index.css' />
+  <script type="text/javascript" src="/javascripts/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="/javascripts/menu.js"></script>
+</head>
+
+<body>
+  <div class="header">
+    <p class="logo">后台管理系统</p>
+    <div class="navigation">
+      <!-- userInfo来自homejs的index方法 -->
+      <ul>
+        <li>管理员：<%=userInfo.username%></li>
+        <li>id：<%=userInfo.userid%></li>
+        <li><a href="/api/users/logout" class="logout">退出登录</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="context">
+    <div class="left_menu">
+      <ul id="nav_dot">
+        <li>
+          <h4 class="M1"><span></span>用户管理</h4>
+          <div class="list-item none">
+            <a href="/users/all/1/1" target="iframe1">普通用户</a>
+          </div>
+          <div class="list-item none">
+            <a href="/users/all/0/1" target="iframe1">管理员</a>
+          </div>
+        </li>
+        <li>
+          <h4 class="M2"><span></span>网址管理</h4>
+          <div class="list-item none">
+            <a href="/users/openupload" target="iframe1">上传网址</a>
+          </div>
+          <div class="list-item none">
+            <a href="/users/getallwebs/1" target="iframe1">网址列表</a>
+          </div>
+        </li>
+        <li>
+          <h4 class="M3"><span></span>论坛管理</h4>
+          <div class="list-item none">
+            <a href="/users/goshare" target="iframe1">发布信息</a>
+            <a href="/users/getarticles/1" target="iframe1">信息列表</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="m-right">
+      <div class="main">
+        <iframe frameborder="0" name="iframe1" width="100%" height="100%">
+          您的浏览器不支持嵌入式框架，或者当前配置为不显示嵌入式框架。
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+<script>navList(20);</script>
+</body>
+
+</html>

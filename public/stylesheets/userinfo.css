@@ -1,0 +1,164 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.form{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.search{
+    position: relative;
+    top: 90px;
+    left: 20px;
+}
+#userlist{
+    border-collapse: collapse;
+    width: 90%;
+    position: relative;
+    top: 100px;
+    left: 20px;
+    text-align: center;
+    font-size: 15px;
+}
+
+#userlist th{
+    text-align: center;
+    vertical-align: middle!important;
+    border-bottom: 1px solid green;
+    background-color: green;
+    color: white;
+}
+td,tr{
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle!important;
+    border-bottom: 1px solid green;
+    padding: 5px;
+}
+.btn{
+    display: block;
+    text-decoration: none;
+    background-color: #29d671;
+    border-radius: 3px;
+    color: white;
+    font-size: 15px;
+    height: 30px;
+    width: 100px;
+    text-align: center;
+    line-height: 30px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.back{
+    text-decoration: none;
+    position: absolute;
+    left: 0;
+    top:50px;
+    color: white;
+}
+
+.header{
+    background-color: #556b56;
+    height: 73px;
+    text-align: center;
+    width: 100%;
+  }
+  .header p{
+    color: white;
+    font-size: 15px;
+    font-family: "宋体";
+    position: absolute;
+    top: 6%;
+    left: 50%;
+    transform: translate(-50%, -50%);  /* 使用css3的transform来实现 */
+    height: 40px;
+    width: 30%;
+}
+
+.info{
+    float: left;
+}
+
+.footer {
+    background-color: #556b56;
+    position: absolute;
+    top:100%;
+    width: 100%;
+    color: white;
+}
+.copyright{
+    padding: 8px;
+}
+.copyright .txt,p {
+    width: 100%;
+    height: 24px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    color: #a2dfa5;
+}
+.manage{
+    color: white;
+    font-weight: bold;
+}
+.active{
+    width: 100%;
+    background-color: #556b56;
+    color: white;
+}
+.userlist{
+    position: relative;
+    left: 3%;
+}
+
+.logout{
+    margin: 0;
+    color: black;
+    position: absolute;
+    right: 5px;
+    top: 7%;
+    font-size: 15px;
+    color: #8eb495;
+}
+.pagination pull-right{
+    position: absolute;
+    top: 400px;
+}
+
+tbody img{
+    width: 40px;
+}
+.addbtn{
+    margin-left: 20px;
+    border: none;
+    background: #6e8d74;
+    color: #fff;
+    padding: 3px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.page{
+    background-color: aqua;
+}
+
+#pagination{
+    position: absolute;
+    bottom: -10px;
+    right: 50px;
+}
+/* .pagination>li>a,.pagination>li>span 设置分页文字样式
+.pagination>.active>a,.pagination>.active>span,.pagination>.active>a:hover,
+.pagination>.active>span:hover,.pagination>.active>a:focus,
+.pagination>.active>span:focus设置active时样式
+*/
+

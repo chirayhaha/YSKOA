@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>网址信息页面</title>
+    <link rel='stylesheet' href='/stylesheets/webs.css' />
+    <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="webs">
+        <table class="webtable" id="table">
+            <thead>
+                <tr>
+                    <th>考试名称</th>
+                    <th>网址链接</th>
+                    <th>考试时间</th>
+                    <th>考试详情</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%for(i=0;i<data.length;i++){%>
+                    <tr class="<%=i%>">
+                        <td>
+                            <span><%= data[i].webname %></span>
+                        </td>
+                        <td>
+                            <span><%= data[i].weblink %></span>
+                        </td>
+                        <td>
+                            <span><%= data[i].testtime %></span>
+                        </td>
+                        <td class="info">
+                            <span><%= data[i].testinfo %></span>
+                        </td>
+                        <td>
+                            <div onclick="edit('<%=i%>')" class="editbtn">编辑</div>
+                        </td>
+                    </tr>
+                    <tr id="<%=(i+1)%>" style="display: none;">
+                        <form action="/users/editwebs/<%=(i+1)%>" method="POST">
+                            <td>
+                                <input type="text" name="webname" value="<%= data[i].webname %>">
+                            </td>
+                            <td>
+                                <input type="text" name="weblink" value="<%= data[i].weblink %>">
+                            </td>
+                            <td>
+                                <input type="text" name="testtime" value="<%= data[i].testtime %>">
+                            </td>
+                            <td>
+                                <input type="text" name="testinfo" value="<%= data[i].testinfo %>">
+                            </td>
+                            <td>
+                                <div>
+                                    <button type="submit" class="cbtn">保存</button>
+                                    <div  onclick="cancel('<%=pagesize%>')" class="cbtn">取消</div>
+                                </div>
+                                
+                            </td>
+                        </form>
+                    </tr>
+                <%}%>
+            </tbody>
+        </table>
+
+        <ul class="pagination pull-right" id="pagination">
+            <li><a href="/users/getallwebs/1">第一页</a></li>
+            <%for(j=1;j<= pagesize;j++){%>
+            <li id="<%= j %>"><a href="/users/getallwebs/<%= j %>"><%= j %> <span class="sr-only">(current)</span></a></li>
+            <%}%>
+            <li><a href="/users/getallwebs/<%=pagesize%>">最后一页</a></li>
+            
+        </ul>
+    </div>
+</body>
+</html>
+
+<script>
+    function edit(i){
+        i = parseInt(i)
+        let a = parseInt(i)+1
+        console.log(a+'.'+i)
+        document.getElementsByClassName(i)[0].style.display = 'none'
+        document.getElementById(a).style.display = 'block'
+        console.log(document.getElementById(i))
+        console.log(document.getElementById(a))
+    }
+    function cancel(pagesize){
+        self.location = '/users/getallwebs/1';
+    }
+    window.onload = function(){
+        let lis = document.getElementById('pagination').getElementsByTagName('li')
+        lis[1].className = 'active'
+        
+        for(var i=0;i<lis.length;i++){
+            if(i!=0 && i!=lis.length-1){
+                lis[i].onclick = function(){
+                    lis[1].className = ''
+                    function clearlis(){                                        // 清除选中样式
+                        for(var i=1;i<(lis.length-1);i++){ 
+                            if(lis[i].className == 'active')
+                            {
+                                lis[i].className = '';
+                                lis[1].className = '';
+                                break;
+                            }
+                        }
+                        lis[1].onclick();
+                    }
+                    this.className = 'active'
+                }
+            }
+        }
+    }
+</script>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+    <title>Document</title>
+</head>
+<body>
+    <div class="articles">
+        <table class="arttable">
+            <thead>
+                <tr>
+                    <th>用户ID</th>
+                    <th>标题</th>
+                    <th>内容</th>
+                    <th>图片</th>
+                    <th>审核状态</th>
+                    <th>操作（审核）</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%for(i=0;i<data.length;i++){%>
+                <tr>
+                    <td><%= data[i].userid %></td>
+                    <td><%= data[i].title %></td>
+                    <td><%= data[i].context %></td>
+                    <td><img src="<%= data[i].image %>" style="width: 100px;"></td>
+                    <%if(data[i].pass==1){%>
+                        <td>已审核通过</td>
+                    <%}%>
+                    <%if(data[i].pass==0){%>
+                        <td>待审核</td>
+                    <%}%>
+                    <%if(data[i].pass==-1){%>
+                        <td>不通过</td>
+                    <%}%>
+                    <td>
+                        <%if(data[i].pass==1 || data[i].pass == -1){%>
+                            <button disabled>通过</button>
+                        <%}%>
+                        <%if(data[i].pass==0){%>
+                            <a href="/users/passornot/1/<%=data[i].id%>"><button>通过</button></a>
+                        <%}%>
+                        <%if(data[i].pass != -1){%>
+                            <a href="/users/passornot/-1/<%=data[i].id%>"><button>不通过</button></a>
+                        <%}%>
+                        <%if(data[i].pass == -1){%>
+                            <button disabled>不通过审核</button>
+                        <%}%>
+                    </td>
+                </tr>
+                <%}%>
+            </tbody>
+        </table>
+
+        
+        <ul class="pagination pull-right" id="pagination">
+            <li><a href="/users/getarticles/1">第一页</a></li>
+            <%for(j=1;j<= pagesize;j++){%>
+            <li id="<%= j %>"><a href="/users/getarticles/<%= j %>"><%= j %> <span class="sr-only">(current)</span></a></li>
+            <%}%>
+            <li><a href="/users/getarticles/<%=pagesize%>">最后一页</a></li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    window.onload = function(){
+        let lis = document.getElementById('pagination').getElementsByTagName('li')
+        lis[1].className = 'active'
+        
+        for(var i=0;i<lis.length;i++){
+            if(i!=0 && i!=lis.length-1){
+                lis[i].onclick = function(){
+                    lis[1].className = ''
+                    function clearlis(){                                        // 清除选中样式
+                        for(var i=1;i<(lis.length-1);i++){ 
+                            if(lis[i].className == 'active')
+                            {
+                                lis[i].className = '';
+                                lis[1].className = '';
+                                break;
+                            }
+                        }
+                        lis[1].onclick();
+                    }
+                    this.className = 'active'
+                }
+            }
+        }
+    }
+</script>
+
+<style>
+    .articles{
+    margin: 0 auto;
+    position: absolute;
+    top: 100px;
+    left: 20px;
+}
+.arttable{
+    width: 100%;
+    font-size: 18px;
+    margin: 0px;
+    padding: 0px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+.arttable th{
+    border-bottom: 1px solid green;
+    text-align: center;
+    vertical-align: middle!important;
+    background-color: green;
+    color: white;
+}
+table td{
+    font-size: 15px;
+    border-bottom: 1px solid green;
+    text-align: center;
+    vertical-align: middle!important;
+}
+table td:hover {
+    overflow:auto;
+    text-overflow:clip;
+}
+button{
+    width: 60px;
+    font-size: 13px;
+}
+
+.pagination{
+    position: relative;
+    bottom: 0px;
+    right: 50px;
+}
+</style>
+
+</html>

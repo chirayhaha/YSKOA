@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>share</title>
+</head>
+<body>
+    <div>
+        <div class="form">
+            <form action="/users/share" method="POST" class="shareform" enctype="multipart/form-data">
+                <div class="image">
+                    <br>
+                    <div class="btn"><input type="file" class="upbtn" name="file" accept=".jpg,.png,.gif"></div>
+                </div><br>
+                <div>
+                    <input type="text" name="title" class="title" placeholder="填写标题">
+                </div> 
+                <div>
+                    <textarea class="context" name="context" rows="13" placeholder="添加正文"></textarea>
+                </div>
+                <div class="topic">
+                    <span>参与话题</span>
+                </div>
+                <div class="bottom">
+                    <button class="sharebtn" type="submit">发布</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>
+<script>
+    function handleUpload(ev){
+        let file = ev.target.files[0]
+        let param = new FormData()
+        param.append('file',file,file.name)
+    }
+</script>
+
+<style>
+*{margin: 0;padding: 0;position: relative;}
+.shareform{
+    position: absolute;
+    top: 110px;
+    left: 50px;
+    width: 60%;
+}
+.shareimg{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.shareform div{
+    margin-bottom: 5px;
+}
+.image{
+    margin-left: 30%;
+}
+.btn{
+    width: 100px;
+    text-align: center;
+    line-height: 20px;
+    height: 100px;
+    font-size: 20px;
+    margin-left: 40px;
+    background: rgb(221, 221, 77);
+    top: 10px;
+    line-height: 100px;
+}
+.upbtn{
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+}
+.title{
+    border: 0.1px solid #ffecc2;
+    width: 100%;
+    color: #333;/*#606266*/
+    padding: 10px 0px;
+}
+.context{
+    border: 0.1px solid #ffecc2;
+    width: 100%;
+    color: #333;/*#606266*/
+    padding: 10px 0px;
+}
+.topic{
+    text-align: left;
+    padding: 5px 5px 5px 0px;
+    width: 98%;
+    height: 30px;
+    border-top: 0.1px solid #ffecc2;
+    border-bottom: 0.1px solid #ffecc2;
+}
+.sharebtn{
+    text-align: center;
+    width: 100%;
+    height: 30px;
+    font-size: 18px;
+    /**两个同时设置可以实现设置完字符间距仍居中显示 */
+    letter-spacing: 3rem;
+    text-indent: 3rem;
+    background-color: #ffcb57;
+    color: white;
+    border-radius: 30px;
+    margin: 10px auto;
+    border: none;
+}
+</style>

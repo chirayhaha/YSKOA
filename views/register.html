@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href='/stylesheets/register.css'>
+</head>
+<body>
+    <div id="re">
+        <div class="header">
+            <div class="title">注册Register</div>
+        </div>
+        <form id="register" method="post" action="/users/addadmin">
+            <h1>注册Register</h1>
+            <fieldset id="inputs">
+                用户名:<input id="username" type="text" name="username" placeholder="用户名" autofocus required> 
+                id:<input name="userid" type="text" placeholder="id" />
+                密码:<input id="password" type="password" name="password" placeholder="密码" required>
+            </fieldset>
+            <fieldset id="actions">
+                <input type="submit" id="submit" value="注册">
+                <a href="/login">登录</a>
+                <input type="reset" id="reset" value="重填">
+            </fieldset>
+        </form>
+
+        <div class="footer" id="foot">
+            <div class="copyright">
+                <p>Copyright © 2020 陈芷芮 Inc. All Rights Reserved.</p>
+                <div class="img">
+                    <span>联系邮箱：123123@sise.com</span>
+                </div>
+                <div class="img">
+                    <span>联系地址：广州大学华软软件学院</span>
+                </div>
+                <div class="img">
+                    <span>联系电话：12345678</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

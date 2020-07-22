@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上传网址</title>
+    <style>
+        .upload{margin: 0 auto;position: absolute;top: 100px;left: 50px;width: 90%;}
+    </style>
+</head>
+<body>
+    <div class="upload">
+        <div>
+            <form action="/users/uploadwebs" method="POST">
+                <div><p>考试名称：<input type="text" name="webname"></p></div>
+                <div><p>考试网址：<input type="test" name="weblink"></p></div>
+                <div><p>考试时间：<input type="test" name="testtime"></p></div>
+                <div><p>考试信息：<input type="text" name="testinfo"></p></div>
+                <div><p><button type="submit">上传</button></p></div>
+            </form>
+            
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    if(ctx.body.code==1){
+        alert('上传成功')
+    }
+</script>
+
+<style>
+    input{
+        width: 80%;
+    }
+</style>
